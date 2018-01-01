@@ -58,7 +58,7 @@
         <!-- 默认的登陆访问url -->
         <property name="loginUrl" value="/login.jsp"/>
         <!-- 登陆成功后跳转的url -->
-        <property name="successUrl" value="/index"/>
+        <property name="successUrl" value="/index.jsp"/>
         <!-- 没有权限跳转的url -->
         <property name="unauthorizedUrl" value="/unauth"/>
         <property name="filterChainDefinitions">
@@ -69,6 +69,7 @@
                     user  验证通过或RememberMe登录的都可以
                 -->
                 /login.jsp = anon
+                /rest/login/** = anon
                 /commons/** = anon
                 /adminLTE/** = anon
                 /layui/** = anon

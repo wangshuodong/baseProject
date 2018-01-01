@@ -12,10 +12,10 @@
     <%@ include file="common/importJs.jsp" %>
 </head>
 
-<body class="hold-transition login-page">
+<body class="hold-transition login-page" style="background-image: url(/static/app/img/admin-login-bg.png);">
 <div class="login-box">
     <div class="login-logo">
-        <a href="../../index2.html"><b>Admin</b>LTE</a>
+        <a href="../../index2.html">在线物业管理系统</a>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
@@ -23,24 +23,27 @@
 
         <form action="../../index2.html" method="post">
             <div class="form-group has-feedback mg">
-                <input type="text" class="form-control"  name="userName" placeholder="用户名" data-rule="用户名:required;username;">
+                <input type="text" class="form-control" name="userName" placeholder="用户名"
+                       data-rule="用户名:required;username;">
                 <span class="glyphicon glyphicon-user form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback mg">
-                <input type="password" class="form-control" name="password"  placeholder="密码"  data-rule="密码:required;password;">
-                <span class="glyphicon glyphicon-lock form-control-feedback" ></span>
+                <input type="password" class="form-control" name="password" placeholder="密码"
+                       data-rule="密码:required;password;">
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group has-feedback mg">
-                            <input type="text" class="form-control" name="captcha" placeholder="验证码" data-rule="验证码:required;length(5);" size="5" >
-                            <span class="glyphicon glyphicon-warning-sign form-control-feedback"></span>
+                            <input type="text" class="form-control" name="captcha" placeholder="验证码"
+                                   data-rule="验证码:required;length(5);" size="5">
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="form-group has-feedback">
-                            <a href="javascript:$('.img').attr('src','/login/captcha');"><img alt="如果看不清楚，请单击图片刷新！" class="pointer img" src="/login/captcha">
+                            <a href="javascript:$('.img').attr('src','/rest/login/captcha');">
+                                <img alt="如果看不清楚，请单击图片刷新！" class="pointer img" src="/rest/login/captcha">
                             </a>
                         </div>
                     </div>
@@ -56,7 +59,8 @@
                 </div>
                 <!-- /.col -->
                 <div class="col-xs-4">
-                    <button type="submit" class="btn btn-primary btn-block btn-flat"><i class="fa fa-sign-in"></i> 登录</button>
+                    <button type="submit" class="btn btn-primary btn-block btn-flat"><i class="fa fa-sign-in"></i> 登录
+                    </button>
                 </div>
                 <!-- /.col -->
             </div>

@@ -1,0 +1,69 @@
+package com.wangsd.web.controller;
+
+import com.google.code.kaptcha.servlet.KaptchaExtend;
+import com.wangsd.common.base.BaseController;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.ServletException;
+import java.io.IOException;
+
+/**
+ * 登录控制器
+ * @author Gaojun.Zhou
+ * @date 2016年12月14日 下午2:54:01
+ */
+@Controller
+@RequestMapping("/login")
+public class LoginController extends BaseController {
+	
+	/**
+	 * 执行登录
+	 */
+//    @RequestMapping(value = "/doLogin",method= RequestMethod.POST)
+//    public  String doLogin(String userName,String password, String captcha,String return_url,RedirectAttributesModelMap model){
+//
+//    	Subject currentUser = SecurityUtils.getSubject();
+//		UsernamePasswordToken token = new UsernamePasswordToken(userName, password);
+//
+//		 if (!currentUser.isAuthenticated()) {
+//	          // token.setRememberMe(true);
+//	            try {
+//	                currentUser.login(token);
+//	            } catch (UnknownAccountException uae) {
+//
+//	            	model.addFlashAttribute("error", "未知用户");
+//	            	return redirectTo("/login");
+//	            } catch (IncorrectCredentialsException ice) {
+//	            	model.addFlashAttribute("error", "密码错误");
+//	            	return redirectTo("/login");
+//	            } catch (LockedAccountException lae) {
+//	            	model.addFlashAttribute("error", "账号已锁定");
+//	            	return redirectTo("/login");
+//	            }
+//	            catch (AuthenticationException ae) {
+//	                //unexpected condition?  error?
+//	            	model.addFlashAttribute("error", "服务器繁忙");
+//	            	return redirectTo("/login");
+//	            }
+//	        }
+//		/**
+//		 * 记录登录日志
+//		 */
+//		 Subject subject = SecurityUtils.getSubject();
+//		 SysUser sysUser = (SysUser) subject.getPrincipal();
+//		 sysLogService.insertLog("用户登录成功",sysUser.getUserName(),request.getRequestURI(),"");
+//		 return redirectTo("/");
+//    }
+	
+    /**
+     * 验证码
+     */
+    @RequestMapping("/captcha")
+	@ResponseBody
+    public  void captcha() throws ServletException, IOException{
+		KaptchaExtend kaptchaExtend =  new KaptchaExtend();
+		kaptchaExtend.captcha(request, response);
+    }
+}

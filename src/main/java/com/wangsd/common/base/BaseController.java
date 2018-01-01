@@ -8,6 +8,7 @@ import com.wangsd.common.utils.URLUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.shiro.SecurityUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
@@ -20,7 +21,10 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -33,6 +37,18 @@ import java.util.Date;
 public abstract class BaseController {
     // 控制器本来就是单例，这样似乎更加合理
     protected Logger logger = LogManager.getLogger(getClass());
+
+    @Autowired
+    protected HttpServletRequest request;
+
+    @Autowired
+    protected HttpServletResponse response;
+
+    @Autowired
+    protected HttpSession session;
+
+    @Autowired
+    protected ServletContext application;
 
     @InitBinder
     public void initBinder(ServletRequestDataBinder binder) {
