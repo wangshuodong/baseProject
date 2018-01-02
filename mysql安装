@@ -1,0 +1,24 @@
+http://www.cnblogs.com/Jxiaobai/p/6836081.html
+https://www.cnblogs.com/5201351/p/4912614.html
+
+1、mysql依赖numactl.rpm，在线安装
+    yum install numactl
+2、centos7 已经不支持mysql，所以内部集成了mariadb，而安装mysql的话会和mariadb的文件冲突，所以需要先卸载掉mariadb。
+    列出所有被安装的rpm package
+        rpm -qa | grep mariadb
+    卸载 mariadb，强制卸载，加上 --nodeps
+        rpm -e --nodeps XXXXX
+3、安装mysql
+    rpm -ivh mysql-*.rpm
+4、初始化数据库，并通过日志查看默认生成的密码
+    mysqld --initialize
+    cat /var/log/mysqld.log
+4、更改mysql数据库目录的所属用户及其所属组，然后启动mysql数据库
+    chown mysql:mysql /var/lib/mysql -R
+    systemctl start mysqld.service
+5、进入mysql，修改mysql的密码
+    mysql -u root -p
+    SET PASSWORD = PASSWORD('Passw0rd');
+6、授权
+    GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'Passw0rd' WITH GRANT OPTION;
+    flush privileges

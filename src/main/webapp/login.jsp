@@ -5,14 +5,14 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>系统首页</title>
+    <title>在线物业管理系统</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <%@ include file="common/importCss.jsp" %>
     <%@ include file="common/importJs.jsp" %>
 </head>
 
-<body class="hold-transition login-page" style="background-image: url(/static/app/img/admin-login-bg.png);">
+<body class="hold-transition login-page">
 <div class="login-box">
     <div class="login-logo">
         <a href="../../index2.html">在线物业管理系统</a>
