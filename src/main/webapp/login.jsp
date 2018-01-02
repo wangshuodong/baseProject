@@ -4,87 +4,67 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>在线物业管理系统</title>
-    <!-- Tell the browser to be responsive to screen width -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <%@ include file="common/importCss.jsp" %>
-    <%@ include file="common/importJs.jsp" %>
+    <link href="${staticPath}/static/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="${staticPath}/static/app/css/login/components.css" rel="stylesheet" id="style_components" type="text/css"/>
+    <link href="${staticPath}/static/app/css/login/login-5.css" rel="stylesheet" type="text/css"/>
+    <link rel="shortcut icon" href="favicon.ico"/>
 </head>
 
-<body class="hold-transition login-page">
-<div class="login-box">
-    <div class="login-logo">
-        <a href="../../index2.html">在线物业管理系统</a>
-    </div>
-    <!-- /.login-logo -->
-    <div class="login-box-body">
-        <p class="login-box-msg">请输入用户名和密码登录</p>
-
-        <form action="../../index2.html" method="post">
-            <div class="form-group has-feedback mg">
-                <input type="text" class="form-control" name="userName" placeholder="用户名"
-                       data-rule="用户名:required;username;">
-                <span class="glyphicon glyphicon-user form-control-feedback"></span>
-            </div>
-            <div class="form-group has-feedback mg">
-                <input type="password" class="form-control" name="password" placeholder="密码"
-                       data-rule="密码:required;password;">
-                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-            </div>
-            <div class="form-group has-feedback">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="form-group has-feedback mg">
-                            <input type="text" class="form-control" name="captcha" placeholder="验证码"
-                                   data-rule="验证码:required;length(5);" size="5">
+<body class=" login">
+<div class="user-login-5">
+    <div class="row bs-reset">
+        <div class="col-md-6 bs-reset mt-login-5-bsfix">
+            <div class="login-bg" style="background-image:url(${staticPath}/static/app/img/login/bg1.jpg)">
+                <img class="login-logo" src="${staticPath}/static/app/img/login/yhw.png"/></div>
+        </div>
+        <div class="col-md-6 login-container bs-reset mt-login-5-bsfix">
+            <div class="login-content">
+                <h1>在线物业管理系统</h1>
+                <p>请输入用户名和密码登录</p>
+                <form action="javascript:;" class="login-form" method="post">
+                    <div class="alert alert-danger display-hide">
+                        <button class="close" data-close="alert"></button>
+                        <span>请输入用户名或密码. </span>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <input class="form-control form-control-solid placeholder-no-fix form-group" type="text"
+                                   autocomplete="off" placeholder="用户名" name="username" required/></div>
+                        <div class="col-xs-6">
+                            <input class="form-control form-control-solid placeholder-no-fix form-group" type="password"
+                                   autocomplete="off" placeholder="密码" name="password" required/></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="rem-password">
+                                <label class="rememberme mt-checkbox mt-checkbox-outline">
+                                    <input type="checkbox" name="remember" value="1"/> 记住我
+                                    <span></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 text-right">
+                            <button type="submit" class="btn green btn-block uppercase">登 录</button>
                         </div>
                     </div>
-                    <div class="col-lg-6">
-                        <div class="form-group has-feedback">
-                            <a href="javascript:$('.img').attr('src','/rest/login/captcha');">
-                                <img alt="如果看不清楚，请单击图片刷新！" class="pointer img" src="/rest/login/captcha">
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                </form>
             </div>
-            <div class="row">
-                <div class="col-xs-8">
-                    <div class="checkbox icheck">
-                        <label>
-                            <input type="checkbox"> 记住我
-                        </label>
-                    </div>
-                </div>
-                <!-- /.col -->
-                <div class="col-xs-4">
-                    <button type="submit" class="btn btn-primary btn-block btn-flat"><i class="fa fa-sign-in"></i> 登录
-                    </button>
-                </div>
-                <!-- /.col -->
-            </div>
-        </form>
-
+        </div>
     </div>
-    <!-- /.login-box-body -->
 </div>
-<!-- /.login-box -->
 
-<!-- jQuery 3 -->
-<script src="../../bower_components/jquery/dist/jquery.min.js"></script>
-<!-- Bootstrap 3.3.7 -->
-<script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<!-- iCheck -->
-<script src="../../plugins/iCheck/icheck.min.js"></script>
+<script src="${staticPath}/static/plugins/jquery.min.js" type="text/javascript"></script>
+<script src="${staticPath}/static/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="${staticPath}/static/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
+<script src="${staticPath}/static/plugins/backstretch/jquery.backstretch.min.js" type="text/javascript"></script>
+<script src="${staticPath}/static/app/js/login/app.js" type="text/javascript"></script>
+<script src="${staticPath}/static/app/js/login/login-5.js" type="text/javascript"></script>
 <script>
-    $(function () {
-        $('input').iCheck({
-            checkboxClass: 'icheckbox_square-blue',
-            radioClass: 'iradio_square-blue',
-            increaseArea: '20%' /* optional */
-        });
-    });
+    var basePath = "${staticPath }";
 </script>
 </body>
+
 </html>

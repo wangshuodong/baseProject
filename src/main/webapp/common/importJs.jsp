@@ -9,7 +9,7 @@
 <%--<script src="${staticPath}/static/plugins/nice-validator-1.1.3/dist/jquery.validator.js?local=zh-CN"></script>--%>
 
 <!-- AdminLTE App -->
-<script src="${staticPath}/static/app/js/app.js"></script>
+<script src="${staticPath}/static/app/js/adminlte.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="${staticPath}/static/app/js/demo.js"></script>
 <!-- 自定义系统初始化话JS -->
