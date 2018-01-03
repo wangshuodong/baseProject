@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ include file="common/global.jsp" %>
+<%@ include file="../../common/global.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +10,7 @@
     <link href="${staticPath}/static/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <link href="${staticPath}/static/app/css/login/components.css" rel="stylesheet" id="style_components" type="text/css"/>
     <link href="${staticPath}/static/app/css/login/login-5.css" rel="stylesheet" type="text/css"/>
-    <link rel="shortcut icon" href="favicon.png"/>
+    <link rel="shortcut icon" href="../../favicon.png"/>
 </head>
 
 <body class=" login">
@@ -24,11 +24,17 @@
             <div class="login-content">
                 <h1>在线物业管理系统</h1>
                 <p>请输入用户名和密码登录</p>
-                <form action="${path}/rest/login/login3" class="login-form" method="post">
+                <form action="${path}/rest/common/login" class="login-form" method="post">
                     <div class="alert alert-danger display-hide">
                         <button class="close" data-close="alert"></button>
                         <span>请输入用户名或密码. </span>
                     </div>
+                    <c:if test="${not empty error}">
+                        <div class="alert alert-danger">
+                            <button class="close" data-close="alert"></button>
+                            <span>${error} </span>
+                        </div>
+                    </c:if>
                     <div class="row">
                         <div class="col-xs-6">
                             <input class="form-control form-control-solid placeholder-no-fix form-group" type="text"

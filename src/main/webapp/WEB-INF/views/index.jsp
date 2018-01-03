@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ include file="common/global.jsp" %>
+<%@ include file="../../common/global.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,8 +8,8 @@
     <title>系统首页</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <%@ include file="common/importCss.jsp" %>
-    <%@ include file="common/importJs.jsp" %>
+    <%@ include file="../../common/importCss.jsp" %>
+    <%@ include file="../../common/importJs.jsp" %>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <!-- Site wrapper -->

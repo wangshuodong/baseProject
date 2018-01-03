@@ -1,9 +1,8 @@
-package com.wangsd.web.controller;
+package com.wangsd.web.controller.common;
 
 import com.google.code.kaptcha.servlet.KaptchaExtend;
 import com.wangsd.common.base.BaseController;
 import com.wangsd.common.scan.BusinessException;
-import com.wangsd.common.utils.StringUtils;
 import com.wangsd.web.model.SysUser;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
@@ -12,6 +11,7 @@ import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,7 +20,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributesModelMap;
 
 import javax.servlet.ServletException;
 import java.io.IOException;
-import java.sql.SQLException;
 
 /**
  * 登录控制器
@@ -29,12 +28,18 @@ import java.sql.SQLException;
  * @date 2016年12月14日 下午2:54:01
  */
 @Controller
-@RequestMapping("/login")
-public class LoginController extends BaseController {
+@RequestMapping("/common")
+public class CommonController extends BaseController {
 
-    @RequestMapping("login2")
-    public String login2() throws Exception {
-        throw new SQLException("出错鸟。。。。。。。。。");
+    @RequestMapping("/login")
+    public String login(Model model) throws Exception {
+        return "/login";
+    }
+
+    @RequestMapping("/login2")
+    public String login2(Model model) throws Exception {
+        model.addAttribute("error", "sdg");
+        return "/login";
     }
 
     @RequestMapping("login3")
@@ -54,14 +59,6 @@ public class LoginController extends BaseController {
     public String doLogin(String username, String password, String captcha,
                           @RequestParam(value = "rememberMe", defaultValue = "0") Integer rememberMe,
                           RedirectAttributesModelMap model) {
-
-        // 改为全部抛出异常，避免ajax csrf token被刷新
-        if (StringUtils.isBlank(username)) {
-            throw new RuntimeException("用户名不能为空");
-        }
-        if (StringUtils.isBlank(password)) {
-            throw new RuntimeException("密码不能为空");
-        }
 //        if (StringUtils.isBlank(captcha)) {
 //            throw new RuntimeException("验证码不能为空");
 //        }
@@ -76,7 +73,6 @@ public class LoginController extends BaseController {
             try {
                 currentUser.login(token);
             } catch (UnknownAccountException uae) {
-
                 model.addFlashAttribute("error", "未知用户");
                 return redirectTo("/login");
             } catch (IncorrectCredentialsException ice) {
