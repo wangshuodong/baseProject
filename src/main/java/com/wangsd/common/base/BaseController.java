@@ -145,7 +145,7 @@ public abstract class BaseController {
 	 * redirect跳转
 	 * @param url 目标url
 	 */
-	protected String redirect(String url) {
+	protected String redirectTo(String url) {
 		return new StringBuilder("redirect:").append(url).toString();
 	}
 	

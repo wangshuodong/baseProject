@@ -68,12 +68,10 @@
                     authc 需要认证
                     user  验证通过或RememberMe登录的都可以
                 -->
+                /favicon.png = anon
                 /login.jsp = anon
                 /rest/login/** = anon
-                /commons/** = anon
-                /adminLTE/** = anon
-                /layui/** = anon
-                /login = anon
+                /static/** = anon
                 /** = user
             </value>
         </property>

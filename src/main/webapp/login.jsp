@@ -10,7 +10,7 @@
     <link href="${staticPath}/static/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <link href="${staticPath}/static/app/css/login/components.css" rel="stylesheet" id="style_components" type="text/css"/>
     <link href="${staticPath}/static/app/css/login/login-5.css" rel="stylesheet" type="text/css"/>
-    <link rel="shortcut icon" href="favicon.ico"/>
+    <link rel="shortcut icon" href="favicon.png"/>
 </head>
 
 <body class=" login">
@@ -24,7 +24,7 @@
             <div class="login-content">
                 <h1>在线物业管理系统</h1>
                 <p>请输入用户名和密码登录</p>
-                <form action="javascript:;" class="login-form" method="post">
+                <form action="${path}/rest/login/login3" class="login-form" method="post">
                     <div class="alert alert-danger display-hide">
                         <button class="close" data-close="alert"></button>
                         <span>请输入用户名或密码. </span>
@@ -41,7 +41,7 @@
                         <div class="col-sm-6">
                             <div class="rem-password">
                                 <label class="rememberme mt-checkbox mt-checkbox-outline">
-                                    <input type="checkbox" name="remember" value="1"/> 记住我
+                                    <input type="checkbox" name="rememberMe" value="1"/> 记住我
                                     <span></span>
                                 </label>
                             </div>
