@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50709
 File Encoding         : 65001
 
-Date: 2018-01-01 23:29:31
+Date: 2018-01-04 00:49:02
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -90,7 +90,7 @@ CREATE TABLE `sys_role` (
 -- ----------------------------
 -- Records of sys_role
 -- ----------------------------
-INSERT INTO `sys_role` VALUES ('3', '超级管理员', null, null, '1', '2017-12-28 16:58:50');
+INSERT INTO `sys_role` VALUES ('948573251449737217', '超级管理员', null, null, '1', '2018-01-03 23:14:21');
 
 -- ----------------------------
 -- Table structure for sys_role_menu
@@ -106,22 +106,22 @@ CREATE TABLE `sys_role_menu` (
 -- ----------------------------
 -- Records of sys_role_menu
 -- ----------------------------
-INSERT INTO `sys_role_menu` VALUES ('33', '3', '1');
-INSERT INTO `sys_role_menu` VALUES ('34', '3', '2');
-INSERT INTO `sys_role_menu` VALUES ('35', '3', '3');
-INSERT INTO `sys_role_menu` VALUES ('36', '3', '4');
-INSERT INTO `sys_role_menu` VALUES ('37', '3', '5');
-INSERT INTO `sys_role_menu` VALUES ('38', '3', '6');
-INSERT INTO `sys_role_menu` VALUES ('39', '3', '101');
-INSERT INTO `sys_role_menu` VALUES ('40', '3', '201');
-INSERT INTO `sys_role_menu` VALUES ('41', '3', '301');
-INSERT INTO `sys_role_menu` VALUES ('42', '3', '302');
-INSERT INTO `sys_role_menu` VALUES ('43', '3', '401');
-INSERT INTO `sys_role_menu` VALUES ('44', '3', '402');
-INSERT INTO `sys_role_menu` VALUES ('45', '3', '403');
-INSERT INTO `sys_role_menu` VALUES ('46', '3', '501');
-INSERT INTO `sys_role_menu` VALUES ('47', '3', '601');
-INSERT INTO `sys_role_menu` VALUES ('48', '3', '602');
+INSERT INTO `sys_role_menu` VALUES ('948573252548644865', '948573251449737217', '1');
+INSERT INTO `sys_role_menu` VALUES ('948573252573810689', '948573251449737217', '2');
+INSERT INTO `sys_role_menu` VALUES ('948573252582199297', '948573251449737217', '3');
+INSERT INTO `sys_role_menu` VALUES ('948573252590587905', '948573251449737217', '4');
+INSERT INTO `sys_role_menu` VALUES ('948573252598976513', '948573251449737217', '5');
+INSERT INTO `sys_role_menu` VALUES ('948573252615753729', '948573251449737217', '6');
+INSERT INTO `sys_role_menu` VALUES ('948573252624142338', '948573251449737217', '101');
+INSERT INTO `sys_role_menu` VALUES ('948573252632530945', '948573251449737217', '201');
+INSERT INTO `sys_role_menu` VALUES ('948573252640919553', '948573251449737217', '301');
+INSERT INTO `sys_role_menu` VALUES ('948573252645113858', '948573251449737217', '302');
+INSERT INTO `sys_role_menu` VALUES ('948573252657696769', '948573251449737217', '401');
+INSERT INTO `sys_role_menu` VALUES ('948573252666085378', '948573251449737217', '402');
+INSERT INTO `sys_role_menu` VALUES ('948573252670279681', '948573251449737217', '403');
+INSERT INTO `sys_role_menu` VALUES ('948573252691251202', '948573251449737217', '501');
+INSERT INTO `sys_role_menu` VALUES ('948573252699639809', '948573251449737217', '601');
+INSERT INTO `sys_role_menu` VALUES ('948573252703834113', '948573251449737217', '602');
 
 -- ----------------------------
 -- Table structure for sys_user
@@ -149,7 +149,7 @@ CREATE TABLE `sys_user` (
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES ('3', 'admin', null, '54ea56e73a5aa92e3190d63f5d16b1f7', '123456', '1', null, null, null, null, '45f08510-cc46-41db-8b62-2b974b6408e6', '3', null, 'http://news.mydrivers.com/Img/20110518/04481549.png', '2017-12-28 16:58:50');
+INSERT INTO `sys_user` VALUES ('948573252993241089', '管理员', 'admin', 'cf16ecca1711d415c0db652834f5770e', '123456', '1', null, null, null, null, '0da444ab-8d19-4ad5-b5e1-492692acf3a9', null, null, 'http://news.mydrivers.com/Img/20110518/04481549.png', '2018-01-03 23:14:22');
 
 -- ----------------------------
 -- Table structure for sys_user_role
@@ -160,8 +160,9 @@ CREATE TABLE `sys_user_role` (
   `userId` bigint(20) NOT NULL COMMENT '用户主键',
   `roleId` bigint(20) NOT NULL COMMENT '角色主键',
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户角色关联表';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='用户角色关联表';
 
 -- ----------------------------
 -- Records of sys_user_role
 -- ----------------------------
+INSERT INTO `sys_user_role` VALUES ('1', '948573252993241089', '948573251449737217');
