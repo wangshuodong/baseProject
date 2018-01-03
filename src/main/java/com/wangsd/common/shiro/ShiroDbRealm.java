@@ -1,11 +1,11 @@
 package com.wangsd.common.shiro;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.wangsd.web.model.SysUser;
+import com.wangsd.web.service.ISysUserService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.AuthenticationInfo;
-import org.apache.shiro.authc.AuthenticationToken;
-import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.authc.*;
 import org.apache.shiro.authc.credential.CredentialsMatcher;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
@@ -13,6 +13,7 @@ import org.apache.shiro.cache.CacheManager;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.SimplePrincipalCollection;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * @description：shiro权限认证
@@ -22,7 +23,8 @@ import org.apache.shiro.subject.SimplePrincipalCollection;
 public class ShiroDbRealm extends AuthorizingRealm {
     private static final Logger LOGGER = LogManager.getLogger(ShiroDbRealm.class);
 
-//    @Autowired private IUserService userService;
+    @Autowired
+    private ISysUserService userService;
 //    @Autowired private IRoleService roleService;
     
     public ShiroDbRealm(CacheManager cacheManager, CredentialsMatcher matcher) {
@@ -37,28 +39,24 @@ public class ShiroDbRealm extends AuthorizingRealm {
             AuthenticationToken authcToken) throws AuthenticationException {
         LOGGER.info("Shiro开始登录认证");
         UsernamePasswordToken token = (UsernamePasswordToken) authcToken;
-//        UserVo uservo = new UserVo();
-//        uservo.setLoginName(token.getUsername());
-//        List<User> list = userService.selectByLoginName(uservo);
-//        // 账号不存在
-//        if (list == null || list.isEmpty()) {
-//            return null;
-//        }
-//        User user = list.get(0);
-//        // 账号未启用
-//        if (user.getStatus() == 1) {
-//            return null;
-//        }
-//        // 读取用户的url和角色
-//        Map<String, Set<String>> resourceMap = roleService.selectResourceMapByUserId(user.getId());
+        SysUser sysUser = userService.selectOne(new EntityWrapper<SysUser>().eq("loginName", token.getUsername()));
+        // 账号不存在
+        if (sysUser == null) {
+            throw new UnknownAccountException();
+        }
+        // 账号未启用
+        if (sysUser.getUserState() == 0) {
+            throw new LockedAccountException();
+        }
+        // 读取用户的url和角色
+//        Map<String, Set<String>> resourceMap = roleService.selectResourceMapByUserId(sysUser.getId());
 //        Set<String> urls = resourceMap.get("urls");
 //        Set<String> roles = resourceMap.get("roles");
-//        ShiroUser shiroUser = new ShiroUser(user.getId(), user.getLoginName(), user.getName(), urls);
+//        ShiroUser shiroUser = new ShiroUser(sysUser.getId(), sysUser.getLoginName(), sysUser.getUserName(), urls);
 //        shiroUser.setRoles(roles);
-//        // 认证缓存信息
-//        return new SimpleAuthenticationInfo(shiroUser, user.getPassword().toCharArray(),
-//                ShiroByteSource.of(user.getSalt()), getName());
-        return null;
+        // 认证缓存信息
+        return new SimpleAuthenticationInfo(sysUser, sysUser.getPassword().toCharArray(),
+                ShiroByteSource.of(sysUser.getSalt()), getName());
     }
 
     /**

@@ -13,4 +13,9 @@ import com.baomidou.mybatisplus.service.IService;
  */
 public interface ISysRoleMenuService extends IService<SysRoleMenu> {
 
+    /**
+     * 角色授权
+     */
+    void addAuth(Long roleId, Long[] menuIds);
+
 }

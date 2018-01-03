@@ -5,17 +5,11 @@ import com.wangsd.common.base.BaseController;
 import com.wangsd.common.scan.BusinessException;
 import com.wangsd.web.model.SysUser;
 import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authc.IncorrectCredentialsException;
-import org.apache.shiro.authc.LockedAccountException;
-import org.apache.shiro.authc.UnknownAccountException;
-import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.authc.*;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributesModelMap;
 
 import javax.servlet.ServletException;
@@ -28,26 +22,25 @@ import java.io.IOException;
  * @date 2016年12月14日 下午2:54:01
  */
 @Controller
-@RequestMapping("/common")
-public class CommonController extends BaseController {
+public class LoginController extends BaseController {
 
     @RequestMapping("/login")
     public String login(Model model) throws Exception {
-        return "/login";
+        return "login";
     }
 
     @RequestMapping("/login2")
     public String login2(Model model) throws Exception {
         model.addAttribute("error", "sdg");
-        return "/login";
+        return "login";
     }
 
-    @RequestMapping("login3")
+    @RequestMapping("/login3")
     public String login3() throws Exception {
         throw new BusinessException("业务执行异常");
     }
 
-    @RequestMapping("login4")
+    @RequestMapping("/login4")
     public String login4() throws Exception {
         throw new RuntimeException("业务执行异常");
     }
@@ -69,27 +62,23 @@ public class CommonController extends BaseController {
         UsernamePasswordToken token = new UsernamePasswordToken(username, password);
         token.setRememberMe(1 == rememberMe);
         if (!currentUser.isAuthenticated()) {
-            // token.setRememberMe(true);
             try {
                 currentUser.login(token);
             } catch (UnknownAccountException uae) {
                 model.addFlashAttribute("error", "未知用户");
-                return redirectTo("/login");
+                return redirectTo("login");
             } catch (IncorrectCredentialsException ice) {
                 model.addFlashAttribute("error", "密码错误");
                 return redirectTo("/login");
             } catch (LockedAccountException lae) {
                 model.addFlashAttribute("error", "账号已锁定");
                 return redirectTo("/login");
-            } catch (Throwable e) {
-                //unexpected condition?  error?
+            } catch (AuthenticationException e) {
                 model.addFlashAttribute("error", "服务器繁忙");
                 return redirectTo("/login");
             }
         }
-        /**
-         * 记录登录日志
-         */
+
         Subject subject = SecurityUtils.getSubject();
         SysUser sysUser = (SysUser) subject.getPrincipal();
 //        sysLogService.insertLog("用户登录成功", sysUser.getUserName(), request.getRequestURI(), "");

@@ -76,7 +76,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>spring-mvc</servlet-name>
-        <url-pattern>/rest/*</url-pattern>
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
 
     <!-- druid监控 -->
@@ -99,26 +99,17 @@
         <url-pattern>/druid/*</url-pattern>
     </servlet-mapping>
 
-    <!-- 首页 -->
-    <welcome-file-list>
-        <welcome-file>/rest/common/login</welcome-file>
-    </welcome-file-list>
+    <session-config>
+        <session-timeout>1</session-timeout>
+    </session-config>
 
     <!-- 错误页 -->
     <error-page>
         <error-code>404</error-code>
-        <location>/rest/common/404</location>
+        <location>/common/404.jsp</location>
     </error-page>
     <error-page>
         <error-code>500</error-code>
-        <location>/rest/common/500</location>
+        <location>/common/500.jsp</location>
     </error-page>
-    <error-page>
-        <exception-type>org.apache.shiro.authz.AuthorizationException</exception-type>
-        <location>/rest/common/401</location>
-    </error-page>
-
-    <session-config>
-        <session-timeout>15</session-timeout>
-    </session-config>
 </web-app>

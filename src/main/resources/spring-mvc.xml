@@ -24,16 +24,9 @@
         <property name="suffix" value=".jsp"></property>
     </bean>
 
-    <!-- csrf CookieCsrfTokenRepository -->
-    <bean class="com.wangsd.common.csrf.CookieCsrfTokenRepository"/>
-
-    <!-- Spring csrf 拦截器 -->
-    <mvc:interceptors>
-        <mvc:interceptor>
-            <mvc:mapping path="/login"/>
-            <bean class="com.wangsd.common.csrf.CsrfInterceptor"/>
-        </mvc:interceptor>
-    </mvc:interceptors>
+    <!-- 配置哪些是静态资源，缺省Servlet 直接返回 -->
+    <mvc:resources location="/static/" mapping="/static/**"/>
+    <mvc:resources location="/upload/" mapping="/upload/**"/>
 
     <mvc:annotation-driven>
         <mvc:message-converters register-defaults="false">

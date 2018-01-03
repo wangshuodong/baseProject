@@ -27,8 +27,9 @@ var Login = function() {
                 }
             },
 
-            invalidHandler: function(event, validator) { //display error alert on form submit   
-                $('.alert-danger', $('.login-form')).show();
+            invalidHandler: function(event, validator) { //display error alert on form submit
+                $('#tip2', $('.login-form')).hide();
+                $('#tip1', $('.login-form')).show();
             },
 
             highlight: function(element) { // hightlight error inputs

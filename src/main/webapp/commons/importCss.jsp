@@ -21,4 +21,4 @@
 <link rel="stylesheet" href="${staticPath}/static/app/css/style.css">
 
 <!-- 网页标签图标 -->
-<link rel="shortcut icon" href="${staticPath }/favicon.ico">
+<link rel="shortcut icon" href="${staticPath }/static/favicon.ico">
