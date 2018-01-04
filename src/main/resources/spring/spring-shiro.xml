@@ -68,11 +68,11 @@
                     authc 需要认证
                     user  验证通过或RememberMe登录的都可以
                 -->
-                /common/** = anon
                 /login = anon
                 /doLogin = anon
                 /logout = anon
                 /captcha = anon
+                /commons/** = anon
                 /static/** = anon
                 /** = authc
             </value>

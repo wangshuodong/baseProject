@@ -38,7 +38,7 @@
                     <div class="row">
                         <div class="col-xs-6">
                             <input class="form-control form-control-solid placeholder-no-fix form-group" type="text"
-                                   autocomplete="off" placeholder="用户名" name="username" required/></div>
+                                   autocomplete="off" placeholder="用户名" name="loginName" required/></div>
                         <div class="col-xs-6">
                             <input class="form-control form-control-solid placeholder-no-fix form-group" type="password"
                                    autocomplete="off" placeholder="密码" name="password" required/></div>

@@ -48,7 +48,7 @@ public class LoginController extends BaseController {
      * 执行登录
      */
     @RequestMapping(value = "/doLogin", method = RequestMethod.POST)
-    public String doLogin(String username, String password, String captcha,
+    public String doLogin(String loginName, String password, String captcha,
                           @RequestParam(value = "rememberMe", defaultValue = "0") Integer rememberMe,
                           RedirectAttributesModelMap model) {
 //        if (StringUtils.isBlank(captcha)) {
@@ -58,8 +58,9 @@ public class LoginController extends BaseController {
 //            throw new RuntimeException("验证码错误");
 //        }
         Subject currentUser = SecurityUtils.getSubject();
-        UsernamePasswordToken token = new UsernamePasswordToken(username, password);
-        token.setRememberMe(1 == rememberMe);
+        UsernamePasswordToken token = new UsernamePasswordToken(loginName, password);
+        //token.setRememberMe(1 == rememberMe);
+        boolean bl = currentUser.isAuthenticated();
         if (!currentUser.isAuthenticated()) {
             try {
                 currentUser.login(token);
@@ -77,6 +78,7 @@ public class LoginController extends BaseController {
                 return "redirect:/login";
             }
         }
+        bl = currentUser.isAuthenticated();
         return "redirect:/index";
     }
 
