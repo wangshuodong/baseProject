@@ -3,10 +3,10 @@
     <!-- Logo -->
     <a href="javascript:;" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini"><img src="${staticPath }/commons/img/yhw.png" class="mylogoimg"></span>
+        <span class="logo-mini"><img src="${staticPath }/static/app/img/yhw.png" class="mylogoimg"></span>
         <!-- logo for regular state and mobile devices -->
         <span class="logo-lg">
-                <img src="${staticPath }/commons/img/yhw.png" class="mylogoimg">
+                <img src="${staticPath }/static/app/img/yhw.png" class="mylogoimg">
                 <b>物业管理系统</b>
             </span>
     </a>
@@ -25,13 +25,13 @@
                 <!-- User Account: style can be found in dropdown.less -->
                 <li class="dropdown user user-menu">
                     <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="${staticPath }/commons/img/admin.png" class="user-image" alt="User Image">
+                        <img src="${staticPath }/static/app/img/admin.png" class="user-image" alt="User Image">
                         <span class="hidden-xs">管理员</span>
                     </a>
                     <ul class="dropdown-menu" style="width: 200px;">
                         <!-- User image -->
                         <li class="user-header" style="height: 120px;">
-                            <img src="${staticPath }/commons/img/admin.png" class="img-circle" alt="User Image">
+                            <img src="${staticPath }/static/app/img/admin.png" class="img-circle" alt="User Image">
                         </li>
                         <!-- Menu Body -->
                         <li class="user-body">

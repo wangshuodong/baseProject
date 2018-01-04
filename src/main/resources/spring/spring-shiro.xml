@@ -27,7 +27,9 @@
 
     <!-- 項目自定义的Realm -->
     <bean id="shiroDbRealm" class="com.wangsd.common.shiro.ShiroDbRealm">
+        <!-- constructor-arg调用ShiroDbRealm的构造方法 -->
         <constructor-arg index="0" name="cacheManager" ref="shiroSpringCacheManager"/>
+        <!-- credentialsMatcher 密码错误5次锁定半小时 -->
         <constructor-arg index="1" name="matcher" ref="credentialsMatcher"/>
         <!-- 启用身份验证缓存，即缓存AuthenticationInfo信息，默认false -->
         <property name="authenticationCachingEnabled" value="true"/>
@@ -72,7 +74,6 @@
                 /doLogin = anon
                 /logout = anon
                 /captcha = anon
-                /commons/** = anon
                 /static/** = anon
                 /** = authc
             </value>

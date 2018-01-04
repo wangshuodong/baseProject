@@ -13,6 +13,7 @@ import org.apache.shiro.cache.CacheManager;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.SimplePrincipalCollection;
+import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -26,7 +27,12 @@ public class ShiroDbRealm extends AuthorizingRealm {
     @Autowired
     private ISysUserService userService;
 //    @Autowired private IRoleService roleService;
-    
+
+    /**
+     * 传入缓存和密码错误几次的构造方法
+     * @param cacheManager
+     * @param matcher
+     */
     public ShiroDbRealm(CacheManager cacheManager, CredentialsMatcher matcher) {
         super(cacheManager, matcher);
     }
@@ -55,8 +61,9 @@ public class ShiroDbRealm extends AuthorizingRealm {
         ShiroUser shiroUser = new ShiroUser(sysUser.getId(), sysUser.getLoginName(), sysUser.getUserName(), null);
 //        shiroUser.setRoles(roles);
         // 认证缓存信息
-        return new SimpleAuthenticationInfo(sysUser.getLoginName(), sysUser.getPassword().toCharArray(),
-                ShiroByteSource.of(sysUser.getSalt()), getName());
+        ;
+        return new SimpleAuthenticationInfo(sysUser.getLoginName(), sysUser.getPassword(),
+                ByteSource.Util.bytes(sysUser.getSalt()), getName());
     }
 
     /**
