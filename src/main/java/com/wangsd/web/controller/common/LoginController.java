@@ -3,7 +3,6 @@ package com.wangsd.web.controller.common;
 import com.google.code.kaptcha.servlet.KaptchaExtend;
 import com.wangsd.common.base.BaseController;
 import com.wangsd.common.scan.BusinessException;
-import com.wangsd.web.model.SysUser;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.subject.Subject;
@@ -64,25 +63,33 @@ public class LoginController extends BaseController {
         if (!currentUser.isAuthenticated()) {
             try {
                 currentUser.login(token);
-            } catch (UnknownAccountException uae) {
+            } catch (UnknownAccountException e) {
                 model.addFlashAttribute("error", "未知用户");
-                return redirectTo("login");
-            } catch (IncorrectCredentialsException ice) {
+                return "redirect:/login";
+            } catch (IncorrectCredentialsException e) {
                 model.addFlashAttribute("error", "密码错误");
-                return redirectTo("/login");
-            } catch (LockedAccountException lae) {
+                return "redirect:/login";
+            } catch (LockedAccountException e) {
                 model.addFlashAttribute("error", "账号已锁定");
-                return redirectTo("/login");
+                return "redirect:/login";
             } catch (AuthenticationException e) {
                 model.addFlashAttribute("error", "服务器繁忙");
-                return redirectTo("/login");
+                return "redirect:/login";
             }
         }
+        return "redirect:/index";
+    }
 
-        Subject subject = SecurityUtils.getSubject();
-        SysUser sysUser = (SysUser) subject.getPrincipal();
-//        sysLogService.insertLog("用户登录成功", sysUser.getUserName(), request.getRequestURI(), "");
-        return redirectTo("/");
+    /**
+     * 未授权
+     * @return {String}
+     */
+    @GetMapping("/unauth")
+    public String unauth() {
+        if (SecurityUtils.getSubject().isAuthenticated() == false) {
+            return "redirect:/login";
+        }
+        return "unauth";
     }
 
     /**

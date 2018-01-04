@@ -140,14 +140,6 @@ public abstract class BaseController {
         }
         return page;
     }
-
-	/**
-	 * redirect跳转
-	 * @param url 目标url
-	 */
-	protected String redirectTo(String url) {
-		return new StringBuilder("redirect:").append(url).toString();
-	}
 	
 	/**
 	 * 下载文件

@@ -13,7 +13,7 @@
     <link href="${staticPath}/static/favicon.ico" rel="shortcut icon"/>
 </head>
 
-<body class=" login">
+<body class="login">
 <div class="user-login-5">
     <div class="row bs-reset">
         <div class="col-md-6 bs-reset mt-login-5-bsfix">

@@ -71,10 +71,10 @@
                 /common/** = anon
                 /login = anon
                 /doLogin = anon
-                /logout = logout
+                /logout = anon
                 /captcha = anon
                 /static/** = anon
-                /** = user
+                /** = authc
             </value>
         </property>
         <property name="filters">

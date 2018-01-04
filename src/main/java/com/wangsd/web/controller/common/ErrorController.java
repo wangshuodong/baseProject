@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/error")
 public class ErrorController {  
     @RequestMapping(value ="/{code}")
-    public  String index(@PathVariable String code, Model model){
-		return "error/" + code;
+    public String index(@PathVariable String code, Model model){
+		return code;
     }  
 }
